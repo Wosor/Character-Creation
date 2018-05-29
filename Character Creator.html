@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<title>Test site</title>
+	
+	<meta charset="UTF-8">
+	<meta name="author" content="Ross Ifill">
+	<meta name="description" content="Template">
+	
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	
+</head>
+
+<body> 
+	<h1> Character Creator </h1>
+
+	Pick a Race: <select id="raceselect" onChange="getRace()">
+  		<option value="chosearace">Chose a Race</option>
+  		<option value="human">Human</option>
+  		<option value="human2">Human alt</option>
+  		<option value="elf">Elf</option>
+  		<option value="elf2">Elf alt</option>
+  		<option value="dwarf">Dwarf</option>
+  		<option value="dwarf2">Dwarf alt</option>
+  		<option value="orc">Orc</option>
+  		<option value="orc2">Orc alt</option>
+	</select> 
+
+	
+	<form name="skills">
+
+		<input type="checkbox" class="checkskill" name="ssword" id="0" value="Short Sword" 
+		onClick="skillChange(1, 0, 0);"> Short Sword
+
+		<input type="checkbox" class="checkskill" name="lsword"  id="1" value="Long Sword" 
+		onClick="skillChange(1, 1, 4);"> Long Sword
+
+		<input type="checkbox" class="checkskill" name="gsword" id="2" value="Great Sword" 
+		onClick="skillChange(1, 2, 7);"> Great Sword
+
+		<input type="checkbox" class="checkskill" name="dagger" id="3" value="Dagger" 
+		onClick="skillChange(1, 3, 4);"> Dagger
+
+		<input type="checkbox" class="checkskill" name="sbow" id="4" value="Short Bow" 
+		onClick="skillChange(1, 4, 6);"> Short Bow
+
+</form>
+
+<div class="row">
+	<p id="stats">
+		Race: <span id="race"></span>
+		<br><br>
+		Acc:  <span id="acc">0</span><br>
+		Char: <span id="char">0</span><br>
+		Con:  <span id="con">0</span><br>
+		Dex:  <span id="dex">0</span><br>
+		Figh: <span id="figh">0</span><br>
+		Int:  <span id="int">0</span><br>
+		Per:  <span id="per">0</span><br>
+		Str:  <span id="str">0</span><br>
+		WP:   <span id="wp">0</span><br>
+
+	</p>
+
+	<p id="skills">
+		
+		Skills:<br>
+
+
+	</p>
+</div>
+
+</body>
+<script type="text/javascript">
+	var crace;
+	var acc = 0;
+	var char = 0;
+	var con = 0;
+	var dex = 0;
+	var figh = 0;
+	var int = 0;
+	var per = 0;
+	var str = 0;
+	var wp = 0;
+
+	var chosenSkills = []
+
+	function setToZero(){
+		UnSelectAll();
+		chosenSkills = [];
+		document.getElementById("skills").innerHTML = "Skills:";
+		acc = 0; 
+		char = 0; 
+		con = 0; 
+		dex = 0; 
+		figh = 0; 
+		int = 0; 
+		per = 0;
+		str = 0; 
+		wp = 0;
+	}
+
+	function getRace(){
+		var race = document.getElementById("raceselect");
+		var option = race.options[race.selectedIndex].value;
+		console.log(option);
+		switch(option) {
+			case "human":
+				console.log("Human one");
+				setToZero();
+				crace = "Human";
+				acc = acc - 1;
+				char = char + 1;
+				con = con + 0;
+				dex = dex - 1;
+				figh = figh + 1;
+				int = int + 1;
+				per = per + 0;
+				str = str + 0;
+				wp = wp - 1;
+				setRace();
+				break;
+			case "human2":
+				console.log("Human two");
+				setToZero();
+				crace = "Human";
+				acc = acc + 1;
+				char = char -1;
+				con = con -1;
+				dex = dex + 1;
+				figh = figh + 0;
+				int = int + 0;
+				per = per + 1;
+				str = str -1;
+				wp = wp + 0;
+				setRace();
+				break;
+			case "elf":
+				console.log("Elf one");
+				setToZero();
+				crace = "Elf";
+				acc = 1;
+				char = -1;
+				con = -1;
+				dex = 1;
+				figh = 0;
+				int = 0;
+				per = 1;
+				str = 0;
+				wp = -1;
+				setRace();
+				break;
+			case "elf2":
+				console.log("Elf two");
+				setToZero();
+				crace = "Elf";
+				acc = 1;
+				char = -1; 
+				con = -1;
+				dex = 0;
+				figh = -1;
+				int = 1;
+				per = 0;
+				str = 0;
+				wp = 1;
+				setRace();
+				break;
+			case "dwarf":
+				console.log("Dwarf one");
+				setToZero();
+				crace = "Dwarf";
+				acc = -1;
+				char = 1;
+				con = 1;
+				dex = 0;
+				figh = -1;
+				int = 0;
+				per = -1;
+				str = 0;
+				wp = 1;
+				setRace();
+				break;
+			case "dwarf2":
+				console.log("Dwarf Two");
+				setToZero();
+				crace = "Dwarf";
+				acc = 0;
+				char = -1;
+				con = 0;
+				dex = 1;
+				figh = 1;
+				int = -1;
+				per = 0;
+				str = 1;
+				wp = -1;
+				setRace();
+				break;
+			case "orc":
+				console.log("Orc one");
+				setToZero();
+				crace = "Orc";
+				acc = 0;
+				char = 0;
+				con = 1;
+				dex = 0;
+				figh = 1;
+				int = -1;
+				per= -1;
+				str = 1;
+				wp = -1;
+				setRace();
+				break;
+			case "orc2":
+				console.log("Orc two");
+				setToZero();
+				crace = "Orc";
+				acc= 1;
+				char = -1; 
+				con = 0;
+				dex = 1;
+				figh = 0;
+				int = -1;
+				per = 1;
+				str = 0;
+				wp = -1;
+				setRace();
+		}
+
+	}
+
+	function setRace(){
+		console.log("race set")
+		document.getElementById("race").innerHTML = crace ;
+		document.getElementById("acc").innerHTML = acc ;
+		document.getElementById("char").innerHTML = char;
+		document.getElementById("con").innerHTML = con;
+		document.getElementById("dex").innerHTML = dex;
+		document.getElementById("figh").innerHTML = figh;
+		document.getElementById("int").innerHTML = int;
+		document.getElementById("per").innerHTML = per;
+		document.getElementById("str").innerHTML = str;
+		document.getElementById("wp").innerHTML = wp;
+	}
+
+	function keepCount() {
+
+		var NewCount = 0
+
+		if (document.skills.ssword.checked){
+			NewCount = NewCount + 1;
+		}
+
+		if (document.skills.lsword.checked){
+			NewCount = NewCount + 1
+		}
+
+		if (document.skills.gsword.checked){
+			NewCount = NewCount + 1
+		}
+
+		if (document.skills.dagger.checked){
+			NewCount = NewCount + 1
+		}
+
+		if (document.skills.sbow.checked){
+			NewCount = NewCount + 1
+		}
+
+		if (NewCount == 3)
+		{
+			alert('Pick Just Two Please')
+			document.skills; return false;
+		}
+	} 
+
+	function skillChange(val, n, skill){
+		this.val = val;
+		this.n = n;
+		this.skill = skill;
+		var x = getSkill(skill)
+		if (keepCount() == false) {
+			document.getElementById(n).checked = false;
+		} else {
+			if (document.getElementById(n).checked) {
+			console.log("+1");
+			x = x + val;
+			setSkill(skill, x);
+			pasteSkill(n);
+			setRace();
+			} else {
+			console.log("-1")
+			x = x - val;
+			setSkill(skill, x);
+			removeSkill(n);
+			setRace();
+			}
+		}
+	}
+
+	function getSkill(s){
+		this.s = s;
+		if (s == 0) {
+			return acc;
+		}
+		if(s == 1){
+			return char;
+		}
+		if (s == 2) {
+			return con;
+		}
+		if (s == 3) {
+			return dex;
+		}
+		if (s == 4) {
+			return figh;
+		}
+		if (s == 5) {
+			return int;
+		}
+		if (s == 6) {
+			return per;
+		}
+		if (s == 7) {
+			return str;
+		}
+		if (s == 8) {
+			return wp;
+		}
+		
+	}
+
+	function setSkill(s,x){
+		this.s = s;
+		this.x = x;
+		if (s == 0) {
+			acc = x;
+		}
+		if(s == 1){
+			char = x;
+		}
+		if (s == 2) {
+			con = x;
+		}
+		if (s == 3) {
+			dex = x;
+		}
+		if (s == 4) {
+			figh = x;
+		}
+		if (s == 5) {
+			int = x;
+		}
+		if (s == 6) {
+			per = x;
+		}
+		if (s == 7) {
+			str = x;
+		}
+		if (s == 8) {
+			wp = x;
+		}
+	}
+
+	function UnSelectAll() {
+        var items = document.getElementsByClassName('checkskill');
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].type == 'checkbox')
+                items[i].checked = false;
+        }
+    }
+
+    function pasteSkill(x){
+    	this.x =  x;
+    	var name = document.getElementById(x).value;
+    	chosenSkills.push(name + description(x));
+
+    	var printThis = "";
+    	for (i = 0; i < chosenSkills.length; i++){
+    		printThis += "<br><li>"+ chosenSkills[i] + "</li>";
+    	}
+    	document.getElementById("skills").innerHTML = "Skills: <br>" + printThis;
+  		
+    }
+
+    function removeSkill(x){
+    	this.x =  x;
+    	var name = document.getElementById(x).value;
+    	var index = chosenSkills.indexOf(name + description(x));
+    	chosenSkills.splice(index, 1);
+    	var printThis = "";
+    	for (i = 0; i < chosenSkills.length; i++){
+    		printThis += "<br>"+chosenSkills[i];
+    	}
+    	document.getElementById("skills").innerHTML = "Skills: <br>" + printThis;
+    }
+
+    function description(x){
+    	this.x = x;
+  		if (x == 0) {
+			return "<br>You are able to use short swords and gain a +1 when attacking";
+		}
+		if(x == 1){
+			return "<br>For Long";
+		}
+		if (x == 2) {
+			return "<br>For great";
+		}
+    }
+
+</script>
+</html>

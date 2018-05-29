@@ -1,0 +1,16 @@
+#stats {
+	flex: 10%;
+	padding: 10px;
+}
+#skills {
+ flex: 90%;
+ padding: 10px;
+}
+
+#postskill {
+	flex: 80%
+	padding 10px
+}
+.row {
+    display: flex;
+}
